@@ -38,6 +38,14 @@ def join_results(results):
             master[my_key] = result[my_key]
     return master
 
+
+def parse_time(s):
+    if s is None:
+        return None
+    my_vars = [int(x) for x in s.split(":")]
+    return 60 * my_vars[0] + my_vars[1]
+
+
 def to_dataframe(master):
     users = [x['name'] for x in master['2019-09-19']]
     table = []
