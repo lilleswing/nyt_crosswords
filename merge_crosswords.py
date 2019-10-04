@@ -54,6 +54,7 @@ def to_dataframe(master):
         for user in users:
             my_data = get_user(v, user)
             my_time = my_data['solveTime']
+            my_time = parse_time(my_time)
             row.append(my_time)
         table.append(row)
     df = pd.DataFrame(table)
