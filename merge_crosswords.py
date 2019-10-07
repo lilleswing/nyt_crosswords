@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import json
 import sys
+import seaborn as sns
 
 def get_user(l, user):
     for elem in l:
@@ -63,16 +64,21 @@ def to_dataframe(master):
     return df
 
 
+def to_html(df, out_file):
+    df = df.fillna(250)
+    s = df.style.background_gradient(cmap='coolwarm', axis=1)
+    html_str = s.render()
+    out_html_name = out_file[:-4] + ".html"
+    with open(out_html_name, 'w') as fout:
+        fout.write(html_str)
+
+
 def de_normalize(folder, out_file):
     results = read_folder(folder)
     master = join_results(results)
     df = to_dataframe(master)
     df.to_csv(out_file, index=None)
-
-    html_str = df.to_html()
-    out_html_name = out_file[:-4] + ".html"
-    with open(out_html_name, 'w') as fout:
-        fout.write(html_str)
+    to_html(df, out_file)
 
 
 if __name__ == "__main__":
