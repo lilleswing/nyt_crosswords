@@ -4,11 +4,24 @@ import json
 import sys
 import seaborn as sns
 
+name_map = {
+    "hannahyouakim": "hewy"
+}
+
 def get_user(l, user):
     for elem in l:
         if elem['name'] == user:
             return elem
     raise ValueError()
+
+
+def update_usernmaes(d):
+    for k,v in d.items():
+        for elem in v:
+            if elem['name'] not in name_map:
+                continue
+            elem['name'] = name_map[elem['name']]
+
 
 def read_folder(folder):
     results = []
@@ -19,12 +32,15 @@ def read_folder(folder):
         path = os.path.join(folder, f)
         with open(path) as fin:
             d = json.loads(fin.read())
+            update_usernames(d)
             results.append(d)
     return results
+
 
 def count_solved(l):
     solved = [x['finished'] for x in l]
     return sum(solved)
+
 
 def join_results(results):
     master = {}
@@ -47,8 +63,16 @@ def parse_time(s):
     return 60 * my_vars[0] + my_vars[1]
 
 
+def get_all_users(master):
+    users = set()
+    for k, v in master.items():
+        day_users = [x['name'] for x in v]
+        users.update(day_users)
+    return list(users)
+
+
 def to_dataframe(master):
-    users = [x['name'] for x in master['2019-09-19']]
+    users = get_all_users(master)
     table = []
     for k, v in master.items():
         row = [k]
