@@ -68,7 +68,7 @@ def get_all_users(master):
     for k, v in master.items():
         day_users = [x['name'] for x in v]
         users.update(day_users)
-    return list(users)
+    return sorted(list(users))
 
 
 def to_dataframe(master):
