@@ -66,6 +66,8 @@ def to_dataframe(master):
 
 def to_html(df, out_file):
     df = df.fillna(250)
+    df.index = df['Date']
+    df = df[df.columns.values.tolist()[1:]]
     s = df.style.background_gradient(cmap='coolwarm', axis=1)
     html_str = s.render()
     out_html_name = out_file[:-4] + ".html"
