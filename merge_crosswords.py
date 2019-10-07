@@ -15,7 +15,7 @@ def get_user(l, user):
     raise ValueError()
 
 
-def update_usernmaes(d):
+def update_usernames(d):
     for k,v in d.items():
         for elem in v:
             if elem['name'] not in name_map:
