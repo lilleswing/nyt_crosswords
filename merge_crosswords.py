@@ -5,7 +5,8 @@ import sys
 import seaborn as sns
 
 name_map = {
-    "hannahyouakim": "hewy"
+    "hannahyouakim": "hannahy"
+    "hewy": "hannahy"
 }
 
 def get_user(l, user):
