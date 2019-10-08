@@ -5,7 +5,7 @@ import sys
 import seaborn as sns
 
 name_map = {
-    "hannahyouakim": "hannahy"
+    "hannahyouakim": "hannahy",
     "hewy": "hannahy"
 }
 
