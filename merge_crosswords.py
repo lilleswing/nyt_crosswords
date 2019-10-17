@@ -9,11 +9,16 @@ name_map = {
     "hewy": "hannahy"
 }
 
+PENALTY_TIME=250
+
 def get_user(l, user):
     for elem in l:
         if elem['name'] == user:
             return elem
-    raise ValueError()
+    print(user)
+    return {
+        "solveTime": None
+    }
 
 
 def update_usernames(d):
@@ -72,6 +77,20 @@ def get_all_users(master):
     return sorted(list(users))
 
 
+def remove_users_from_df(df, users):
+    columns = df.columns.values.tolist()
+    good_users = []
+    for user in users:
+        count_all = len(df[user])
+        count_bad = sum(df[user].isna())
+        print(user, count_bad, count_all)
+        if count_bad / count_all < 0.4:
+            good_users.append(user)
+    print(good_users)
+    df = df[['Date'] + good_users]
+    return df
+
+
 def to_dataframe(master):
     users = get_all_users(master)
     table = []
@@ -85,12 +104,13 @@ def to_dataframe(master):
         table.append(row)
     df = pd.DataFrame(table)
     df.columns = ['Date'] + users
+    df = remove_users_from_df(df, users)
     df = df.sort_values("Date")
     return df
 
 
 def to_html(df, out_file):
-    df = df.fillna(250)
+    df = df.fillna(PENALTY_TIME)
     df.index = df['Date']
     df = df[df.columns.values.tolist()[1:]]
     s = df.style.background_gradient(cmap='coolwarm', axis=1)
