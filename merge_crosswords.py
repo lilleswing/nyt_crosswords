@@ -9,6 +9,8 @@ name_map = {
     "hewy": "hannahy"
 }
 
+always_include_users = set(["Steinbach", "GravyBaby"])
+
 PENALTY_TIME=250
 
 def get_user(l, user):
@@ -81,9 +83,11 @@ def remove_users_from_df(df, users):
     columns = df.columns.values.tolist()
     good_users = []
     for user in users:
+        if user in always_include_users:
+            good_users.append(user)
+            continue
         count_all = len(df[user])
         count_bad = sum(df[user].isna())
-        print(user, count_bad, count_all)
         if count_bad / count_all < 0.4:
             good_users.append(user)
     print(good_users)
