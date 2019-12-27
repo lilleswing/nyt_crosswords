@@ -109,7 +109,7 @@ def to_dataframe(master):
     df = pd.DataFrame(table)
     df.columns = ['Date'] + users
     df = remove_users_from_df(df, users)
-    df = df.sort_values("Date")
+    df = df.sort_values("Date", ascending=False)
     return df
 
 
