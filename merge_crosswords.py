@@ -9,7 +9,7 @@ name_map = {
     "hewy": "hannahy"
 }
 
-always_include_users = set(["Steinbach", "GravyBaby"])
+always_include_users = set(["Steinbach", "GravyBaby", "flipperkid"])
 
 PENALTY_TIME=250
 
