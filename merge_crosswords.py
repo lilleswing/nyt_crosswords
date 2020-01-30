@@ -113,15 +113,15 @@ def to_dataframe(master):
 
 
 def to_html(df, out_file):
-    df = df.fillna(PENALTY_TIME)
+    #df = df.fillna(PENALTY_TIME)
     df.index = df['Date']
     df = df[df.columns.values.tolist()[1:]]
-    df = df.astype('int32')
-    s = df.style.background_gradient(cmap='coolwarm', axis=1)
-    html_str = s.render()
-    out_html_name = out_file[:-4] + ".html"
-    with open(out_html_name, 'w') as fout:
-        fout.write(html_str)
+    with pd.option_context('display.precision', 0):
+        s = df.style.background_gradient(cmap='coolwarm', axis=1).highlight_null(null_color='white')
+        html_str = s.render()
+        out_html_name = out_file[:-4] + ".html"
+        with open(out_html_name, 'w') as fout:
+            fout.write(html_str)
 
 
 def de_normalize(folder, out_file):
