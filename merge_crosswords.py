@@ -17,7 +17,6 @@ def get_user(l, user):
     for elem in l:
         if elem['name'] == user:
             return elem
-    print(user)
     return {
         "solveTime": None
     }
@@ -116,8 +115,8 @@ def to_dataframe(master):
 def to_html(df, out_file):
     df = df.fillna(PENALTY_TIME)
     df.index = df['Date']
-    df = df.astype('int32')
     df = df[df.columns.values.tolist()[1:]]
+    df = df.astype('int32')
     s = df.style.background_gradient(cmap='coolwarm', axis=1)
     html_str = s.render()
     out_html_name = out_file[:-4] + ".html"
