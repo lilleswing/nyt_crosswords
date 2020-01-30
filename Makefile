@@ -7,7 +7,7 @@ test:
 	python merge_crosswords.py all_scores solve_times.csv
 
 deploy:
-	export PATH=`pwd`/anaconda/bin:$PATH
+	export PATH=`pwd`/anaconda/bin:${PATH}
 	cp -r /home/leswing/Public/crossword/raw ./
 	python merge_crosswords.py raw solve_times.csv
 	scp solve_times.csv karl_leswing@karlleswing.com:/home/karl_leswing/karlleswing.com/misc
