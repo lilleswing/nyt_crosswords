@@ -4,7 +4,7 @@ install: anaconda/LICENSE.txt
 .PHONY: test
 test:
 	rm -f solve_times.csv solve_times.html
-	python merge_crosswords.py all_scores solve_times.csv
+	python merge_crosswords.py test_data solve_times.csv
 
 deploy:
 	export PATH=`pwd`/anaconda/bin:${PATH}
