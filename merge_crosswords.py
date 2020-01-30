@@ -115,6 +115,7 @@ def to_dataframe(master):
 
 def to_html(df, out_file):
     df = df.fillna(PENALTY_TIME)
+    df = df.astype('int32')
     df.index = df['Date']
     df = df[df.columns.values.tolist()[1:]]
     s = df.style.background_gradient(cmap='coolwarm', axis=1)
