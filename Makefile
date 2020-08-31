@@ -16,4 +16,5 @@ deploy:
 stonks:
 	python stonks.py
 	scp stonks.html karl_leswing@karlleswing.com:/home/karl_leswing/karlleswing.com/misc
+	scp stonks.png karl_leswing@karlleswing.com:/home/karl_leswing/karlleswing.com/misc
 
