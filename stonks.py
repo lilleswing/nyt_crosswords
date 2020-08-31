@@ -7,7 +7,7 @@
 import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
+#get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # In[2]:
@@ -80,7 +80,7 @@ master_df = master_df.fillna(method='ffill')
 team_names = []
 for i in range(len(teams)):
     name = f"{teams[i]}-{stonks[i]}"
-    team_names.append(name) 
+    team_names.append(name)
 master_df['Date'] = master_df.index
 
 
@@ -109,7 +109,7 @@ for i, tn in enumerate(team_names[7:]):
     max_y = max(max_y, max(master_df[tn]))
     ax2.plot(master_df['Date'], master_df[tn], marker=marker_id)
 ax1.set_ylim([min_y, max_y])
-ax2.set_ylim([min_y, max_y])    
+ax2.set_ylim([min_y, max_y])
 ax2.legend(team_names[7:], loc='upper center', ncol=len(team_names)//2)
 fig.patch.set_facecolor('white')
 plt.savefig('stonks.png')
