@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def get_open_price(my_share, symbol):
@@ -17,6 +18,7 @@ def get_now_price(my_share):
 
 stonks = ['CP', 'WORK', 'GRVY', 'CRWD', 'RKT', 'SKYW', 'CWH', 'MRNA', 'MU', 'FIZZ', 'TSLA', 'ALK', 'EDSA', 'BB']
 teams = ['Ethan', 'Jelly', 'Gravy', 'Lutes', 'Brian', 'Susan', 'Erin', 'Ana', 'Jarel', 'Erik', 'Daniel', 'Hayne', 'Ivan', 'Kalish']
+opens = [22.75, 32.4,90.48,124.07,28.83,34.53,31.86,66.82,45.33,82.41,473.26,39.97,8.54,5.26]
 table = []
 for symbol, team in zip(stonks, teams):
     my_share = yf.Ticker(symbol)
