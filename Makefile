@@ -12,3 +12,8 @@ deploy:
 	python merge_crosswords.py raw solve_times.csv
 	scp solve_times.csv karl_leswing@karlleswing.com:/home/karl_leswing/karlleswing.com/misc
 	scp solve_times.html karl_leswing@karlleswing.com:/home/karl_leswing/karlleswing.com/misc
+
+stonks:
+	python stonks.py
+	scp stonks.html karl_leswing@karlleswing.com:/home/karl_leswing/karlleswing.com/misc
+
