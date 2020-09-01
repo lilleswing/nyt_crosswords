@@ -86,7 +86,6 @@ master_df['Date'] = master_df.index
 
 # In[7]:
 
-
 fig, (ax1, ax2) = plt.subplots(1,2, figsize=(30,10))
 ax1.grid()
 ax2.grid()
@@ -99,7 +98,8 @@ for i, tn in enumerate(team_names[:7]):
         marker_id = 0
     min_y = min(min_y, min(master_df[tn]))
     max_y = max(max_y, max(master_df[tn]))
-    ax1.plot(master_df['Date'], master_df[tn], marker=marker_id)
+    #ax1.plot(master_df['Date'], master_df[tn], marker=marker_id)
+    ax1.plot(list(range(len(master_df))), master_df[tn], marker=marker_id)
 ax1.legend(team_names[:7], loc='upper center', ncol=len(team_names)//2)
 for i, tn in enumerate(team_names[7:]):
     marker_id = i
@@ -107,13 +107,13 @@ for i, tn in enumerate(team_names[7:]):
         marker_id = 0
     min_y = min(min_y, min(master_df[tn]))
     max_y = max(max_y, max(master_df[tn]))
-    ax2.plot(master_df['Date'], master_df[tn], marker=marker_id)
+    #ax2.plot(master_df['Date'], master_df[tn], marker=marker_id)
+    ax2.plot(list(range(len(master_df))), master_df[tn], marker=marker_id)
 ax1.set_ylim([min_y, max_y])
 ax2.set_ylim([min_y, max_y])
 ax2.legend(team_names[7:], loc='upper center', ncol=len(team_names)//2)
 fig.patch.set_facecolor('white')
 plt.savefig('stonks.png')
-
 
 # In[108]:
 
