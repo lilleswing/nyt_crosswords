@@ -23,7 +23,7 @@ def get_open_price(my_share, symbol):
     return open_price
 
 def get_now_price(my_share):
-    now_table = my_share.history(period='1d', interval='1m')
+    now_table = my_share.history(period='1d', interval='1d')
     now_price = now_table['Open'].values[-1]
     return now_price
 
@@ -55,7 +55,7 @@ df.to_html('stonks.html')
 dfs = []
 for symbol, team in zip(stonks, teams):
     my_share = yf.Ticker(symbol)
-    df = my_share.history(start='2020-08-31', interval='1m')
+    df = my_share.history(start='2020-08-31', interval='1d')
     df.fillna(method='ffill')
     dfs.append(df)
 
